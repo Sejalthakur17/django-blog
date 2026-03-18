@@ -32,11 +32,10 @@ services:
     build: ./react-frontend
     container_name: blog_frontend
     ports:
-      - "3000:3000"
-    stdin_open: true
-    tty: true
+      - "3000:80"
     networks:
       - backend_network
+
 volumes:
     - ./database:/app/database  
     - ./backend/media:/app/backend/media
