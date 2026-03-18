@@ -30,8 +30,8 @@ services:
       - backend_network
 
 volumes:
-    - ./backend:/app/backend
+    - ./database:/app/database  
+    - ./backend/media:/app/backend/media
     - ./frontend:/app/frontend
-
 networks:
   backend_network:
