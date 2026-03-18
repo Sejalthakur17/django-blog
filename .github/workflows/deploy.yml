@@ -1,4 +1,4 @@
-name: CI/CD to ECR + EC2
+name: CI/CD to ECR + EC2 (Docker Compose)
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    # Configure AWS credentials
+    #  Configure AWS credentials
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
@@ -25,47 +25,73 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
-    # CREATE ECR REPO 
-    - name: Create ECR Repository if not exists
+    #  Ensure ECR exists
+    - name: Ensure ECR repository exists
       run: |
        aws ecr describe-repositories --repository-names $ECR_REPOSITORY 2>/dev/null || \
        aws ecr create-repository --repository-name $ECR_REPOSITORY
 
-    # Login to ECR
+    #  Login to ECR
     - name: Login to ECR
       run: |
         aws ecr get-login-password --region $AWS_REGION \
         | docker login --username AWS --password-stdin \
         ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com
 
-    # Build Docker Image
+    #  Build Docker Image
     - name: Build Docker Image
       run: docker build -t django-blog ./backend
 
-    # Tag Image
+    #  Tag Image
     - name: Tag Docker Image
       run: |
         docker tag django-blog:latest \
         ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:latest
 
-    # Push to ECR
+    #  Push to ECR
     - name: Push Docker Image
       run: |
         docker push \
         ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:latest
 
-    # Deploy to EC2
-    - name: Deploy to EC2
+    #  Deploy using Docker Compose on EC2
+    - name: Deploy to EC2 (Docker Compose)
       uses: appleboy/ssh-action@v0.1.10
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ubuntu
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com/$ECR_REPOSITORY:latest
-          
-          docker stop blog || true
-          docker rm blog || true
-          
-          docker run -d --name blog -p 8000:8000 \
-          ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com/$ECR_REPOSITORY:latest
+          # Install Docker if missing
+          if ! command -v docker &> /dev/null; then
+            sudo apt update
+            sudo apt install docker.io -y
+            sudo usermod -aG docker ubuntu
+            newgrp docker
+          fi
+
+          # Install Docker Compose if missing
+          if ! command -v docker-compose &> /dev/null; then
+            sudo apt install docker-compose -y
+          fi
+
+          # Login to ECR
+          aws ecr get-login-password --region ap-south-1 \
+          | docker login --username AWS --password-stdin \
+          ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com
+
+          # Clone repo if not exists
+          if [ ! -d "django-blog" ]; then
+            git clone https://github.com/Sejalthakur17/django-blog.git
+          fi
+
+          cd django-blog
+
+          # Pull latest code
+          git pull
+
+          # Stop old containers
+          docker-compose down
+
+          # Start containers (db + backend + frontend)
+          docker-compose up -d --build
