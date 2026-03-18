@@ -23,7 +23,7 @@ COPY --from=builder /root/.local /root/.local
 
 # Set PATH
 ENV PATH=/root/.local/bin:$PATH
-ENV PYTHONPATH=/app/backend 
+ENV PYTHONPATH=/app 
 
 # Copy project code
 COPY . .
