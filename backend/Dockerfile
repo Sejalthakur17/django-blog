@@ -31,4 +31,4 @@ COPY . .
 RUN python manage.py collectstatic --noinput || true
 
 # Run app
-CMD ["sh", "-c", "cd backend && python manage.py migrate && gunicorn django_project.wsgi:application --bind 0.0.0.0:8000"]
+CMD ["gunicorn", "backend.django_project.wsgi:application", "--bind", "0.0.0.0:8000"]
