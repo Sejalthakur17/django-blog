@@ -3,13 +3,22 @@ from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+
+from rest_framework import generics
 from .models import Post
+from .serializers import PostSerializer
 
 
 def home(request):
     context = {'posts' : Post.objects.all() }
     return render(request, 'blog/home.html', context)
+class PostListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
+class PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 class PostListView(ListView):
     model = Post
     template_name= 'blog/home.html'
