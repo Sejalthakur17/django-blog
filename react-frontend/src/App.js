@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+const API = "http://3.7.135.124:8000";
+
 function App() {
   const [posts, setPosts] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
-  const API = process.env.REACT_APP_API_URL; // 👈 ADD
 
   useEffect(() => {
     fetchPosts();
@@ -42,44 +42,36 @@ function App() {
 
   return (
     <div className="container">
-      <h1 className="heading">🚀 Blog App</h1>
+      <h1>🚀 Blog App</h1>
 
-      <div className="form">
-        <h2>Create Post</h2>
+      <div>
         <input
-          className="input"
           placeholder="Enter title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
 
         <textarea
-          className="textarea"
           placeholder="Enter content"
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
 
-        <button className="btn" onClick={createPost}>
-          Add Post
-        </button>
+        <button onClick={createPost}>Add Post</button>
       </div>
 
-      <div className="posts">
-        {posts.map((post) => (
-          <div key={post.id} className="card">
-            <h2>{post.title}</h2>
-            <p>{post.content}</p>
+      <hr />
 
-            <button
-              className="deleteBtn"
-              onClick={() => deletePost(post.id)}
-            >
-              Delete
-            </button>
-          </div>
-        ))}
-      </div>
+      {posts.map((post) => (
+        <div key={post.id}>
+          <h3>{post.title}</h3>
+          <p>{post.content}</p>
+
+          <button onClick={() => deletePost(post.id)}>
+            Delete
+          </button>
+        </div>
+      ))}
     </div>
   );
 }
