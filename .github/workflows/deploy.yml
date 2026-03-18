@@ -1,19 +1,19 @@
 name: CI/CD to ECR + EC2 (Docker Compose)
 
 on:
-push:
-branches:
-- main
+  push:
+    branches:
+      - main
 
 env:
-AWS_REGION: ap-south-1
-ECR_REPOSITORY: django-blog
-AWS_ACCOUNT_ID: 909646905892
-FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  AWS_REGION: ap-south-1
+  ECR_REPOSITORY: django-blog
+  AWS_ACCOUNT_ID: 909646905892
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-deploy:
-runs-on: ubuntu-latest
+  deploy:
+  runs-on: ubuntu-latest
 
 steps:
   - name: Checkout
