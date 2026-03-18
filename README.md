@@ -25,9 +25,3 @@ cd django-blog
 pip install -r requirements.txt  
 python manage.py migrate  
 python manage.py runserver  
-
-## 📸 Screenshots
-(Add here)
-
-## 👩‍💻 Author
-Sejal Thakur
