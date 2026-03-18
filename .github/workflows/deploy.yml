@@ -1,99 +1,109 @@
 name: CI/CD to ECR + EC2 (Docker Compose)
 
 on:
-  push:
-    branches: [ "main" ]
+push:
+branches: [ "main" ]
 
 env:
-  AWS_REGION: ap-south-1
-  ECR_REPOSITORY: django-blog
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+AWS_REGION: ap-south-1
+ECR_REPOSITORY: django-blog
+AWS_ACCOUNT_ID: 909646905892
+FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+deploy:
+runs-on: ubuntu-latest
 
-    steps:
-    # Checkout code
-    - name: Checkout
-      uses: actions/checkout@v3
+```
+steps:
+# Checkout code
+- name: Checkout
+  uses: actions/checkout@v4
 
-    #  Configure AWS credentials
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v2
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
+# Configure AWS credentials
+- name: Configure AWS credentials
+  uses: aws-actions/configure-aws-credentials@v3
+  with:
+    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+    aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+    aws-region: ${{ env.AWS_REGION }}
 
-    #  Ensure ECR exists
-    - name: Ensure ECR repository exists
-      run: |
-       aws ecr describe-repositories --repository-names $ECR_REPOSITORY 2>/dev/null || \
-       aws ecr create-repository --repository-name $ECR_REPOSITORY
+# Ensure ECR exists
+- name: Ensure ECR repository exists
+  run: |
+    aws ecr describe-repositories --repository-names $ECR_REPOSITORY 2>/dev/null || \
+    aws ecr create-repository --repository-name $ECR_REPOSITORY
 
-    #  Login to ECR
-    - name: Login to ECR
-      run: |
-        aws ecr get-login-password --region $AWS_REGION \
-        | docker login --username AWS --password-stdin \
-        ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com
+# Login to ECR
+- name: Login to ECR
+  run: |
+    aws ecr get-login-password --region $AWS_REGION \
+    | docker login --username AWS --password-stdin \
+    $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
 
-    #  Build Docker Image
-    - name: Build Docker Image
-      run: docker build -t django-blog -f backend/Dockerfile .
+# Build Docker Image
+- name: Build Docker Image
+  run: |
+    docker build -t $ECR_REPOSITORY -f backend/Dockerfile .
 
-    #  Tag Image
-    - name: Tag Docker Image
-      run: |
-        docker tag django-blog:latest \
-        ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:latest
+# Tag Image
+- name: Tag Docker Image
+  run: |
+    docker tag $ECR_REPOSITORY:latest \
+    $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:latest
 
-    #  Push to ECR
-    - name: Push Docker Image
-      run: |
-        docker push \
-        ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:latest
+# Push to ECR
+- name: Push Docker Image
+  run: |
+    docker push \
+    $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:latest
 
-    #  Deploy using Docker Compose on EC2
-    - name: Deploy to EC2 (Docker Compose)
-      uses: appleboy/ssh-action@v0.1.10
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ubuntu
-        key: ${{ secrets.EC2_SSH_KEY }}
-        script: |
-          # Install Docker if missing
-          if ! command -v docker &> /dev/null; then
-            sudo apt update
-            sudo apt install docker.io -y
-            sudo usermod -aG docker ubuntu
-            newgrp docker
-          fi
+# Deploy to EC2
+- name: Deploy to EC2 (Docker Compose)
+  uses: appleboy/ssh-action@v0.1.10
+  with:
+    host: ${{ secrets.EC2_HOST }}
+    username: ubuntu
+    key: ${{ secrets.EC2_SSH_KEY }}
+    script: |
+      # Install Docker if missing
+      if ! command -v docker &> /dev/null; then
+        sudo apt update
+        sudo apt install docker.io -y
+        sudo usermod -aG docker ubuntu
+        newgrp docker
+      fi
 
-          # Install Docker if missing
-          if ! command -v docker &> /dev/null; then
-           sudo apt update
-           sudo apt install docker.io -y
-           sudo usermod -aG docker ubuntu
-           newgrp docker
-          fi
+      # Install Docker Compose if missing
+      if ! command -v docker-compose &> /dev/null; then
+        sudo apt install docker-compose -y
+      fi
 
-          # Install Docker Compose if missing
-          if ! command -v docker-compose &> /dev/null; then
-           sudo apt install docker-compose -y
-          fi
+      # Install AWS CLI if missing
+      if ! command -v aws &> /dev/null; then
+        sudo apt update
+        sudo apt install awscli -y
+      fi
 
-          # Clone repo if not exists
-          if [ ! -d "django-blog" ]; then
-           git clone https://github.com/Sejalthakur17/django-blog.git
-          fi
+      # Login to ECR (uses IAM role on EC2)
+      aws ecr get-login-password --region ap-south-1 \
+      | docker login --username AWS --password-stdin \
+      909646905892.dkr.ecr.ap-south-1.amazonaws.com
 
-          cd django-blog
+      # Clone repo if not exists
+      if [ ! -d "django-blog" ]; then
+        git clone https://github.com/Sejalthakur17/django-blog.git
+      fi
 
-          # Pull latest code
-          git pull
+      cd django-blog
 
-          # Restart containers
-          docker-compose down
-          docker-compose up -d --build
+      # Pull latest code
+      git pull
+
+      # Pull latest image from ECR
+      docker pull 909646905892.dkr.ecr.ap-south-1.amazonaws.com/django-blog:latest
+
+      # Restart containers
+      docker-compose down
+      docker-compose up -d
+```

@@ -13,9 +13,7 @@ services:
       - backend_network
 
   backend:
-    build:
-      context: .
-      dockerfile: backend/Dockerfile
+    image: 909646905892.dkr.ecr.ap-south-1.amazonaws.com/django-blog:latest
     container_name: blog_backend
     command: >
      sh -c "
