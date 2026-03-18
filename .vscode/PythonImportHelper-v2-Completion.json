@@ -690,7 +690,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'frontend/static', \n]\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'frontend/static', \n]\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
@@ -699,7 +699,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'frontend/static', \n]\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\nMEDIA_URL = '/media/'",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'frontend/static', \n]\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'\nMEDIA_URL = '/media/'",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
@@ -708,7 +708,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "STATIC_URL = '/static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'frontend/static', \n]\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'backend/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field",
+        "peekOfCode": "STATIC_URL = '/static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'frontend/static', \n]\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'backend/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
@@ -717,7 +717,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "STATICFILES_DIRS = [\n    BASE_DIR / 'frontend/static', \n]\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'backend/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "STATICFILES_DIRS = [\n    BASE_DIR / 'frontend/static', \n]\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'backend/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
@@ -726,7 +726,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "STATIC_ROOT = BASE_DIR / 'staticfiles'\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'backend/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nCRISPY_ALLOWED_TEMPLATE_PACKS = \"bootstrap5\"\nCRISPY_TEMPLATE_PACK = \"bootstrap5\"\nLOGIN_REDIRECT_URL = 'blog-home'",
+        "peekOfCode": "STATIC_ROOT = BASE_DIR / 'staticfiles'\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'backend/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nCRISPY_ALLOWED_TEMPLATE_PACKS = \"bootstrap5\"\nCRISPY_TEMPLATE_PACK = \"bootstrap5\"\nLOGIN_REDIRECT_URL = 'blog-home'",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
@@ -735,7 +735,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'backend/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nCRISPY_ALLOWED_TEMPLATE_PACKS = \"bootstrap5\"\nCRISPY_TEMPLATE_PACK = \"bootstrap5\"\nLOGIN_REDIRECT_URL = 'blog-home'\nLOGIN_URL = 'login'",
+        "peekOfCode": "STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'\nMEDIA_URL = '/media/'\nMEDIA_ROOT = BASE_DIR / 'backend/media'\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nCRISPY_ALLOWED_TEMPLATE_PACKS = \"bootstrap5\"\nCRISPY_TEMPLATE_PACK = \"bootstrap5\"\nLOGIN_REDIRECT_URL = 'blog-home'\nLOGIN_URL = 'login'",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
