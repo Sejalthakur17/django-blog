@@ -74,6 +74,16 @@ jobs:
           if ! command -v docker-compose &> /dev/null; then
             sudo apt install docker-compose -y
           fi
+          # Install AWS CLI if missing
+          if ! command -v aws &> /dev/null; then
+            sudo apt update
+            sudo apt install awscli -y
+          fi
+
+          # Configure AWS credentials
+          aws configure set aws_access_key_id $AWS_ACCESS_KEY
+          aws configure set aws_secret_access_key $AWS_SECRET_KEY
+          aws configure set default.region ap-south-1
 
           # Login to ECR
           aws ecr get-login-password --region ap-south-1 \
