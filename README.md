@@ -1,8 +1,33 @@
-# Blog-Website
-Blogs can be create, update, delete with logging user. Login system is created with new registration, login and profile page.
+# Django Blog
 
-# Blog-Website Specifications
-Home page contains Blogs with profile picture(logged user's profile pic), title of blog, username, blog post date and content of blog with pagination.
-Profile picture and username are link which are transfer to only blogs which are created by specified user.
-Blogs are updated and deleted only by author of that blog.
-Profile is only changed by logging user.
+A modular full-stack blog application built with Django.
+
+## 🚀 Features
+- User Authentication (Login/Register)
+- Create, Update, Delete Blog Posts
+- User Profiles
+- Admin Panel
+
+## 🛠 Tech Stack
+- Backend: Django (Python)
+- Frontend: HTML, CSS, Bootstrap
+- Database: SQLite
+
+## 📂 Project Structure
+backend/ → Django apps (users, blog)  
+frontend/ → templates & static files  
+database/ → SQLite DB  
+
+## ⚙️ Setup
+
+git clone https://github.com/Sejalthakur17/django-blog.git  
+cd django-blog  
+pip install -r requirements.txt  
+python manage.py migrate  
+python manage.py runserver  
+
+## 📸 Screenshots
+(Add here)
+
+## 👩‍💻 Author
+Sejal Thakur
