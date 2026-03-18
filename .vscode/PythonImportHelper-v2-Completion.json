@@ -465,7 +465,7 @@
         "kind": 6,
         "importPath": "backend.blog.apps",
         "description": "backend.blog.apps",
-        "peekOfCode": "class BlogConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'backend.blog'",
+        "peekOfCode": "class BlogConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'backend.blog'\n    label = 'blog'",
         "detail": "backend.blog.apps",
         "documentation": {}
     },
