@@ -713,7 +713,7 @@
         "kind": 5,
         "importPath": "backend.django_project.urls",
         "description": "backend.django_project.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('api/', include('blog.urls')),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('api/', include('backend.blog.urls'))\n]",
         "detail": "backend.django_project.urls",
         "documentation": {}
     },
