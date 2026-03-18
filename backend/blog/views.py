@@ -7,7 +7,14 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from rest_framework import generics
 from .models import Post
 from .serializers import PostSerializer
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import Post
 
+@api_view(['GET'])
+def get_posts(request):
+    posts = Post.objects.all().values()
+    return Response(list(posts))
 
 def home(request):
     context = {'posts' : Post.objects.all() }

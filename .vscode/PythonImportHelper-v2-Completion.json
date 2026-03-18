@@ -170,6 +170,14 @@
         "documentation": {}
     },
     {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "include",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -362,6 +370,22 @@
         "documentation": {}
     },
     {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -467,15 +491,6 @@
         "documentation": {}
     },
     {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
-        "documentation": {}
-    },
-    {
         "label": "sys",
         "kind": 6,
         "isExtraImport": true,
@@ -525,7 +540,7 @@
         "kind": 5,
         "importPath": "backend.blog.urls",
         "description": "backend.blog.urls",
-        "peekOfCode": "urlpatterns = [\n    path('api/posts/', PostListCreateAPIView.as_view()),\n    path('api/posts/<int:pk>/', PostDetailAPIView.as_view()),   path('', PostListView.as_view(), name='blog-home'),\n    path('user/<str:username>', UserPostListView.as_view(), name='user-posts'),\n    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),\n    path('post/new/', PostCreateView.as_view(), name='post-create'),\n    path('post/<int:pk>/update', PostUpdateView.as_view(), name='post-update'),\n    path('post/<int:pk>/delete', PostDeleteView.as_view(), name='post-delete'),\n    path('about/', views.about, name='blog-about')\n]",
+        "peekOfCode": "urlpatterns = [\n    path('posts/', get_posts),\n    path('api/posts/', PostListCreateAPIView.as_view()),\n    path('api/posts/<int:pk>/', PostDetailAPIView.as_view()),   path('', PostListView.as_view(), name='blog-home'),\n    path('user/<str:username>', UserPostListView.as_view(), name='user-posts'),\n    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),\n    path('post/new/', PostCreateView.as_view(), name='post-create'),\n    path('post/<int:pk>/update', PostUpdateView.as_view(), name='post-update'),\n    path('post/<int:pk>/delete', PostDeleteView.as_view(), name='post-delete'),\n    path('about/', views.about, name='blog-about')",
         "detail": "backend.blog.urls",
         "documentation": {}
     },
@@ -598,6 +613,15 @@
         "importPath": "backend.blog.views",
         "description": "backend.blog.views",
         "peekOfCode": "class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):\n    model = Post\n    success_url = '/'\n    def test_func(self):\n        post = self.get_object()\n        if self.request.user == post.author:\n            return True\n        else:\n            return False\ndef about(request):",
+        "detail": "backend.blog.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_posts",
+        "kind": 2,
+        "importPath": "backend.blog.views",
+        "description": "backend.blog.views",
+        "peekOfCode": "def get_posts(request):\n    posts = Post.objects.all().values()\n    return Response(list(posts))\ndef home(request):\n    context = {'posts' : Post.objects.all() }\n    return render(request, 'blog/home.html', context)\nclass PostListCreateAPIView(generics.ListCreateAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\nclass PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):",
         "detail": "backend.blog.views",
         "documentation": {}
     },
@@ -1031,42 +1055,6 @@
         "description": "backend.users.views",
         "peekOfCode": "def profile(request):\n    if request.method=='POST':\n        u_form = UserUpdateForm(request.POST, instance=request.user)\n        p_form = ProfileUpdateForm(request.POST, request.FILES ,instance=request.user.profile)\n        if u_form.is_valid() and p_form.is_valid():\n            u_form.save()\n            p_form.save()\n            messages.success(request, f'Your account has been updated!')\n            return redirect('profile')\n    else:",
         "detail": "backend.users.views",
-        "documentation": {}
-    },
-    {
-        "label": "_Known",
-        "kind": 6,
-        "importPath": "frontend.react-frontend.node_modules.flatted.python.flatted",
-        "description": "frontend.react-frontend.node_modules.flatted.python.flatted",
-        "peekOfCode": "class _Known:\n    def __init__(self):\n        self.key = []\n        self.value = []\nclass _String:\n    def __init__(self, value):\n        self.value = value\ndef _array_keys(value):\n    for i in range(len(value)):\n        yield i",
-        "detail": "frontend.react-frontend.node_modules.flatted.python.flatted",
-        "documentation": {}
-    },
-    {
-        "label": "_String",
-        "kind": 6,
-        "importPath": "frontend.react-frontend.node_modules.flatted.python.flatted",
-        "description": "frontend.react-frontend.node_modules.flatted.python.flatted",
-        "peekOfCode": "class _String:\n    def __init__(self, value):\n        self.value = value\ndef _array_keys(value):\n    for i in range(len(value)):\n        yield i\ndef _object_keys(value):\n    for key in value:\n        yield key\ndef _is_array(value):",
-        "detail": "frontend.react-frontend.node_modules.flatted.python.flatted",
-        "documentation": {}
-    },
-    {
-        "label": "parse",
-        "kind": 2,
-        "importPath": "frontend.react-frontend.node_modules.flatted.python.flatted",
-        "description": "frontend.react-frontend.node_modules.flatted.python.flatted",
-        "peekOfCode": "def parse(value, *args, **kwargs):\n    json = _json.loads(value, *args, **kwargs)\n    wrapped = []\n    for value in json:\n        wrapped.append(_wrap(value))\n    input = []\n    for value in wrapped:\n        if isinstance(value, _String):\n            input.append(value.value)\n        else:",
-        "detail": "frontend.react-frontend.node_modules.flatted.python.flatted",
-        "documentation": {}
-    },
-    {
-        "label": "stringify",
-        "kind": 2,
-        "importPath": "frontend.react-frontend.node_modules.flatted.python.flatted",
-        "description": "frontend.react-frontend.node_modules.flatted.python.flatted",
-        "peekOfCode": "def stringify(value, *args, **kwargs):\n    known = _Known()\n    input = []\n    output = []\n    i = int(_index(known, input, value))\n    while i < len(input):\n        output.append(_transform(known, input, input[i]))\n        i += 1\n    return _json.dumps(output, *args, **kwargs)",
-        "detail": "frontend.react-frontend.node_modules.flatted.python.flatted",
         "documentation": {}
     },
     {
