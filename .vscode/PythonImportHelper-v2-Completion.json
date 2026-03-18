@@ -389,7 +389,7 @@
         "kind": 6,
         "importPath": "backend.blog.views",
         "description": "backend.blog.views",
-        "peekOfCode": "class PostListCreateAPIView(generics.ListCreateAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\n# GET single post + UPDATE + DELETE\nclass PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer",
+        "peekOfCode": "class PostListCreateAPIView(generics.ListCreateAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\nclass PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer",
         "detail": "backend.blog.views",
         "documentation": {}
     },
