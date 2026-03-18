@@ -16,14 +16,6 @@
         "documentation": {}
     },
     {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
-        "documentation": {}
-    },
-    {
         "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
@@ -162,22 +154,6 @@
         "documentation": {}
     },
     {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
         "label": "include",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -191,14 +167,6 @@
         "description": "django.utils",
         "isExtraImport": true,
         "detail": "django.utils",
-        "documentation": {}
-    },
-    {
-        "label": "User",
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.models",
         "documentation": {}
     },
     {
@@ -266,126 +234,6 @@
         "documentation": {}
     },
     {
-        "label": "views",
-        "importPath": "backend.blog",
-        "description": "backend.blog",
-        "isExtraImport": true,
-        "detail": "backend.blog",
-        "documentation": {}
-    },
-    {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "get_object_or_404",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "redirect",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "Paginator",
-        "importPath": "django.core.paginator",
-        "description": "django.core.paginator",
-        "isExtraImport": true,
-        "detail": "django.core.paginator",
-        "documentation": {}
-    },
-    {
-        "label": "LoginRequiredMixin",
-        "importPath": "django.contrib.auth.mixins",
-        "description": "django.contrib.auth.mixins",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.mixins",
-        "documentation": {}
-    },
-    {
-        "label": "UserPassesTestMixin",
-        "importPath": "django.contrib.auth.mixins",
-        "description": "django.contrib.auth.mixins",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.mixins",
-        "documentation": {}
-    },
-    {
-        "label": "ListView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "DetailView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "CreateView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "UpdateView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "DeleteView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "api_view",
-        "importPath": "rest_framework.decorators",
-        "description": "rest_framework.decorators",
-        "isExtraImport": true,
-        "detail": "rest_framework.decorators",
-        "documentation": {}
-    },
-    {
-        "label": "Response",
-        "importPath": "rest_framework.response",
-        "description": "rest_framework.response",
-        "isExtraImport": true,
-        "detail": "rest_framework.response",
-        "documentation": {}
-    },
-    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -408,30 +256,6 @@
         "description": "pathlib",
         "isExtraImport": true,
         "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "views",
-        "importPath": "django.contrib.auth",
-        "description": "django.contrib.auth",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth",
-        "documentation": {}
-    },
-    {
-        "label": "views",
-        "importPath": "backend.users",
-        "description": "backend.users",
-        "isExtraImport": true,
-        "detail": "backend.users",
-        "documentation": {}
-    },
-    {
-        "label": "static",
-        "importPath": "django.conf.urls.static",
-        "description": "django.conf.urls.static",
-        "isExtraImport": true,
-        "detail": "django.conf.urls.static",
         "documentation": {}
     },
     {
@@ -480,6 +304,22 @@
         "description": "django.db.models.signals",
         "isExtraImport": true,
         "detail": "django.db.models.signals",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
         "documentation": {}
     },
     {
@@ -540,7 +380,7 @@
         "kind": 5,
         "importPath": "backend.blog.urls",
         "description": "backend.blog.urls",
-        "peekOfCode": "urlpatterns = [\n    path('posts/', get_posts),\n    path('api/posts/', PostListCreateAPIView.as_view()),\n    path('api/posts/<int:pk>/', PostDetailAPIView.as_view()),   path('', PostListView.as_view(), name='blog-home'),\n    path('user/<str:username>', UserPostListView.as_view(), name='user-posts'),\n    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),\n    path('post/new/', PostCreateView.as_view(), name='post-create'),\n    path('post/<int:pk>/update', PostUpdateView.as_view(), name='post-update'),\n    path('post/<int:pk>/delete', PostDeleteView.as_view(), name='post-delete'),\n    path('about/', views.about, name='blog-about')",
+        "peekOfCode": "urlpatterns = [\n    path('posts/', PostListCreateAPIView.as_view()),\n    path('posts/<int:pk>/', PostDetailAPIView.as_view()),\n]",
         "detail": "backend.blog.urls",
         "documentation": {}
     },
@@ -549,7 +389,7 @@
         "kind": 6,
         "importPath": "backend.blog.views",
         "description": "backend.blog.views",
-        "peekOfCode": "class PostListCreateAPIView(generics.ListCreateAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\nclass PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\nclass PostListView(ListView):\n    model = Post\n    template_name= 'blog/home.html'\n    context_object_name = 'posts'",
+        "peekOfCode": "class PostListCreateAPIView(generics.ListCreateAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\n# GET single post + UPDATE + DELETE\nclass PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer",
         "detail": "backend.blog.views",
         "documentation": {}
     },
@@ -558,88 +398,7 @@
         "kind": 6,
         "importPath": "backend.blog.views",
         "description": "backend.blog.views",
-        "peekOfCode": "class PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\nclass PostListView(ListView):\n    model = Post\n    template_name= 'blog/home.html'\n    context_object_name = 'posts'\n    ordering = ['-date_posted'] \n    paginate_by = 3\nclass UserPostListView(ListView):",
-        "detail": "backend.blog.views",
-        "documentation": {}
-    },
-    {
-        "label": "PostListView",
-        "kind": 6,
-        "importPath": "backend.blog.views",
-        "description": "backend.blog.views",
-        "peekOfCode": "class PostListView(ListView):\n    model = Post\n    template_name= 'blog/home.html'\n    context_object_name = 'posts'\n    ordering = ['-date_posted'] \n    paginate_by = 3\nclass UserPostListView(ListView):\n    model = Post\n    template_name= 'blog/user_posts.html'\n    context_object_name = 'posts'",
-        "detail": "backend.blog.views",
-        "documentation": {}
-    },
-    {
-        "label": "UserPostListView",
-        "kind": 6,
-        "importPath": "backend.blog.views",
-        "description": "backend.blog.views",
-        "peekOfCode": "class UserPostListView(ListView):\n    model = Post\n    template_name= 'blog/user_posts.html'\n    context_object_name = 'posts'\n    paginate_by = 3\n    def get_queryset(self):\n        user = get_object_or_404(User, username = self.kwargs.get('username'))\n        return Post.objects.filter(author=user).order_by('-date_posted')\nclass PostDetailView(DetailView):\n    model = Post",
-        "detail": "backend.blog.views",
-        "documentation": {}
-    },
-    {
-        "label": "PostDetailView",
-        "kind": 6,
-        "importPath": "backend.blog.views",
-        "description": "backend.blog.views",
-        "peekOfCode": "class PostDetailView(DetailView):\n    model = Post\nclass PostCreateView(LoginRequiredMixin, CreateView):\n    model = Post\n    fields = ['title', 'content']\n    def form_valid(self, form):\n        form.instance.author = self.request.user\n        return super().form_valid(form)\nclass PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):\n    model = Post",
-        "detail": "backend.blog.views",
-        "documentation": {}
-    },
-    {
-        "label": "PostCreateView",
-        "kind": 6,
-        "importPath": "backend.blog.views",
-        "description": "backend.blog.views",
-        "peekOfCode": "class PostCreateView(LoginRequiredMixin, CreateView):\n    model = Post\n    fields = ['title', 'content']\n    def form_valid(self, form):\n        form.instance.author = self.request.user\n        return super().form_valid(form)\nclass PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):\n    model = Post\n    fields = ['title', 'content']\n    def form_valid(self, form):",
-        "detail": "backend.blog.views",
-        "documentation": {}
-    },
-    {
-        "label": "PostUpdateView",
-        "kind": 6,
-        "importPath": "backend.blog.views",
-        "description": "backend.blog.views",
-        "peekOfCode": "class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):\n    model = Post\n    fields = ['title', 'content']\n    def form_valid(self, form):\n        form.instance.author = self.request.user\n        return super().form_valid(form)\n    def test_func(self):\n        post = self.get_object()\n        if self.request.user == post.author:\n            return True",
-        "detail": "backend.blog.views",
-        "documentation": {}
-    },
-    {
-        "label": "PostDeleteView",
-        "kind": 6,
-        "importPath": "backend.blog.views",
-        "description": "backend.blog.views",
-        "peekOfCode": "class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):\n    model = Post\n    success_url = '/'\n    def test_func(self):\n        post = self.get_object()\n        if self.request.user == post.author:\n            return True\n        else:\n            return False\ndef about(request):",
-        "detail": "backend.blog.views",
-        "documentation": {}
-    },
-    {
-        "label": "get_posts",
-        "kind": 2,
-        "importPath": "backend.blog.views",
-        "description": "backend.blog.views",
-        "peekOfCode": "def get_posts(request):\n    posts = Post.objects.all().values()\n    return Response(list(posts))\ndef home(request):\n    context = {'posts' : Post.objects.all() }\n    return render(request, 'blog/home.html', context)\nclass PostListCreateAPIView(generics.ListCreateAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\nclass PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):",
-        "detail": "backend.blog.views",
-        "documentation": {}
-    },
-    {
-        "label": "home",
-        "kind": 2,
-        "importPath": "backend.blog.views",
-        "description": "backend.blog.views",
-        "peekOfCode": "def home(request):\n    context = {'posts' : Post.objects.all() }\n    return render(request, 'blog/home.html', context)\nclass PostListCreateAPIView(generics.ListCreateAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\nclass PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\nclass PostListView(ListView):",
-        "detail": "backend.blog.views",
-        "documentation": {}
-    },
-    {
-        "label": "about",
-        "kind": 2,
-        "importPath": "backend.blog.views",
-        "description": "backend.blog.views",
-        "peekOfCode": "def about(request):\n    return render(request, 'blog/about.html')",
+        "peekOfCode": "class PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer",
         "detail": "backend.blog.views",
         "documentation": {}
     },
@@ -954,7 +713,7 @@
         "kind": 5,
         "importPath": "backend.django_project.urls",
         "description": "backend.django_project.urls",
-        "peekOfCode": "urlpatterns = [  \n    path('admin/', admin.site.urls),\n    path('register/', user_views.register, name = 'register'), \n    path('profile/', user_views.profile, name = 'profile'),\n    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name = 'login'), \n    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name = 'logout'),\n    path('password-reset', auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'), name = 'password_reset'),\n    path('password-reset-done', auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'), name = 'password_reset_done'),\n    path('password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'), name = 'password_reset_confirm'),\n    path('password-reset-complete', auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'), name = 'password_reset_complete'),",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('api/', include('blog.urls')),\n]",
         "detail": "backend.django_project.urls",
         "documentation": {}
     },
