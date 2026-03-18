@@ -645,7 +645,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "WSGI_APPLICATION = 'backend.django_project.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/4.1/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.postgresql',\n        'NAME': os.getenv('POSTGRES_DB'),\n        'USER': os.getenv('POSTGRES_USER'),\n        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),\n        'HOST': os.getenv('DB_HOST'),",
+        "peekOfCode": "WSGI_APPLICATION = 'backend.django_project.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/4.1/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / '../database/db.sqlite3',\n        'USER': os.getenv('POSTGRES_USER'),\n        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),\n        'HOST': os.getenv('DB_HOST'),",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
@@ -654,7 +654,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.postgresql',\n        'NAME': os.getenv('POSTGRES_DB'),\n        'USER': os.getenv('POSTGRES_USER'),\n        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),\n        'HOST': os.getenv('DB_HOST'),\n        'PORT': os.getenv('DB_PORT'),\n    }\n}",
+        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / '../database/db.sqlite3',\n        'USER': os.getenv('POSTGRES_USER'),\n        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),\n        'HOST': os.getenv('DB_HOST'),\n        'PORT': os.getenv('DB_PORT'),\n    }\n}",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
