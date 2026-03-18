@@ -28,8 +28,8 @@ jobs:
     # CREATE ECR REPO 
     - name: Create ECR Repository if not exists
       run: |
-        aws ecr describe-repositories --repository-names $ECR_REPOSITORY || \
-        aws ecr create-repository --repository-name $ECR_REPOSITORY
+       aws ecr describe-repositories --repository-names $ECR_REPOSITORY 2>/dev/null || \
+       aws ecr create-repository --repository-name $ECR_REPOSITORY
 
     # Login to ECR
     - name: Login to ECR
