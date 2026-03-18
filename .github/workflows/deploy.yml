@@ -1,0 +1,71 @@
+name: CI/CD to ECR + EC2
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  AWS_REGION: ap-south-1
+  ECR_REPOSITORY: django-blog
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout code
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Configure AWS credentials
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    # CREATE ECR REPO 
+    - name: Create ECR Repository if not exists
+      run: |
+        aws ecr describe-repositories --repository-names $ECR_REPOSITORY || \
+        aws ecr create-repository --repository-name $ECR_REPOSITORY
+
+    # Login to ECR
+    - name: Login to ECR
+      run: |
+        aws ecr get-login-password --region $AWS_REGION \
+        | docker login --username AWS --password-stdin \
+        ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com
+
+    # Build Docker Image
+    - name: Build Docker Image
+      run: docker build -t django-blog ./backend
+
+    # Tag Image
+    - name: Tag Docker Image
+      run: |
+        docker tag django-blog:latest \
+        ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:latest
+
+    # Push to ECR
+    - name: Push Docker Image
+      run: |
+        docker push \
+        ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:latest
+
+    # Deploy to EC2
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ubuntu
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com/$ECR_REPOSITORY:latest
+          
+          docker stop blog || true
+          docker rm blog || true
+          
+          docker run -d --name blog -p 8000:8000 \
+          ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com/$ECR_REPOSITORY:latest
