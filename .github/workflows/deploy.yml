@@ -14,7 +14,6 @@ jobs:
 deploy:
 runs-on: ubuntu-latest
 
-```
 steps:
 # Checkout code
 - name: Checkout
@@ -106,4 +105,3 @@ steps:
       # Restart containers
       docker-compose down
       docker-compose up -d
-```
