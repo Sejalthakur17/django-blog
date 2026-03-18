@@ -71,24 +71,22 @@ jobs:
             newgrp docker
           fi
 
-          # Install Docker Compose if missing
-          if ! command -v docker-compose &> /dev/null; then
-            sudo apt install docker-compose -y
-          fi
-          # Install AWS CLI if missing
-          if ! command -v aws &> /dev/null; then
-            sudo apt update
-            sudo apt install awscli -y
+          # Install Docker if missing
+          if ! command -v docker &> /dev/null; then
+           sudo apt update
+           sudo apt install docker.io -y
+           sudo usermod -aG docker ubuntu
+           newgrp docker
           fi
 
-          # Login to ECR
-          aws ecr get-login-password --region ap-south-1 \
-          | docker login --username AWS --password-stdin \
-          ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com
+          # Install Docker Compose if missing
+          if ! command -v docker-compose &> /dev/null; then
+           sudo apt install docker-compose -y
+          fi
 
           # Clone repo if not exists
           if [ ! -d "django-blog" ]; then
-            git clone https://github.com/Sejalthakur17/django-blog.git
+           git clone https://github.com/Sejalthakur17/django-blog.git
           fi
 
           cd django-blog
@@ -96,8 +94,6 @@ jobs:
           # Pull latest code
           git pull
 
-          # Stop old containers
+          # Restart containers
           docker-compose down
-
-          # Start containers (db + backend + frontend)
           docker-compose up -d --build
