@@ -30,7 +30,7 @@ services:
       - backend_network
 
   frontend:
-    build: ./frontend/react-frontend 
+    build: ./react-frontend
     container_name: blog_frontend
     ports:
       - "3000:80"
