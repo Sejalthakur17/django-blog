@@ -30,7 +30,7 @@ services:
       - backend_network
 
 volumes:
-  postgres_data:
+   - ./backend/media:/app/backend/media
 
 networks:
   backend_network:
