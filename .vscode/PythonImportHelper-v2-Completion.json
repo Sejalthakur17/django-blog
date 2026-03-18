@@ -573,7 +573,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-v%@#)^()f04%m7w!)k!047c0mi)jou#d=_*o_e5h1p3=m+@yv('\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-v%@#)^()f04%m7w!)k!047c0mi)jou#d=_*o_e5h1p3=m+@yv('\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['3.7.135.124']\n# Application definition\nINSTALLED_APPS = [",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
@@ -582,7 +582,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "SECRET_KEY = 'django-insecure-v%@#)^()f04%m7w!)k!047c0mi)jou#d=_*o_e5h1p3=m+@yv('\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'backend.users.apps.UsersConfig',\n    'backend.blog.apps.BlogConfig',\n    'crispy_forms',\n    \"crispy_bootstrap5\",",
+        "peekOfCode": "SECRET_KEY = 'django-insecure-v%@#)^()f04%m7w!)k!047c0mi)jou#d=_*o_e5h1p3=m+@yv('\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['3.7.135.124']\n# Application definition\nINSTALLED_APPS = [\n    'backend.users.apps.UsersConfig',\n    'backend.blog.apps.BlogConfig',\n    'crispy_forms',\n    \"crispy_bootstrap5\",",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
@@ -591,7 +591,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'backend.users.apps.UsersConfig',\n    'backend.blog.apps.BlogConfig',\n    'crispy_forms',\n    \"crispy_bootstrap5\",\n    'django.contrib.admin',\n    'django.contrib.auth',",
+        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = ['3.7.135.124']\n# Application definition\nINSTALLED_APPS = [\n    'backend.users.apps.UsersConfig',\n    'backend.blog.apps.BlogConfig',\n    'crispy_forms',\n    \"crispy_bootstrap5\",\n    'django.contrib.admin',\n    'django.contrib.auth',",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
@@ -600,7 +600,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "ALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'backend.users.apps.UsersConfig',\n    'backend.blog.apps.BlogConfig',\n    'crispy_forms',\n    \"crispy_bootstrap5\",\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.conTruetenttypes',",
+        "peekOfCode": "ALLOWED_HOSTS = ['3.7.135.124']\n# Application definition\nINSTALLED_APPS = [\n    'backend.users.apps.UsersConfig',\n    'backend.blog.apps.BlogConfig',\n    'crispy_forms',\n    \"crispy_bootstrap5\",\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.conTruetenttypes',",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
