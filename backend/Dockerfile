@@ -23,7 +23,6 @@ COPY --from=builder /root/.local /root/.local
 
 # Set PATH
 ENV PATH=/root/.local/bin:$PATH
-ENV PYTHONPATH=/app 
 
 # Copy project code
 COPY . .
@@ -32,4 +31,4 @@ COPY . .
 RUN python manage.py collectstatic --noinput || true
 
 # Run app
-CMD ["gunicorn", "backend.django_project.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["sh", "-c", "cd backend && gunicorn django_project.wsgi:application --bind 0.0.0.0:8000"]
