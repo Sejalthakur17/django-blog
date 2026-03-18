@@ -162,6 +162,14 @@
         "documentation": {}
     },
     {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "include",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -215,6 +223,22 @@
         "description": "django.contrib.auth.models",
         "isExtraImport": true,
         "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "generics",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
         "documentation": {}
     },
     {
@@ -443,6 +467,15 @@
         "documentation": {}
     },
     {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
         "label": "sys",
         "kind": 6,
         "isExtraImport": true,
@@ -479,12 +512,39 @@
         "documentation": {}
     },
     {
+        "label": "PostSerializer",
+        "kind": 6,
+        "importPath": "backend.blog.serializers",
+        "description": "backend.blog.serializers",
+        "peekOfCode": "class PostSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Post\n        fields = '__all__'",
+        "detail": "backend.blog.serializers",
+        "documentation": {}
+    },
+    {
         "label": "urlpatterns",
         "kind": 5,
         "importPath": "backend.blog.urls",
         "description": "backend.blog.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', PostListView.as_view(), name='blog-home'),\n    path('user/<str:username>', UserPostListView.as_view(), name='user-posts'),\n    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),\n    path('post/new/', PostCreateView.as_view(), name='post-create'),\n    path('post/<int:pk>/update', PostUpdateView.as_view(), name='post-update'),\n    path('post/<int:pk>/delete', PostDeleteView.as_view(), name='post-delete'),\n    path('about/', views.about, name='blog-about')\n]",
+        "peekOfCode": "urlpatterns = [\n    path('api/posts/', PostListCreateAPIView.as_view()),\n    path('api/posts/<int:pk>/', PostDetailAPIView.as_view()),   path('', PostListView.as_view(), name='blog-home'),\n    path('user/<str:username>', UserPostListView.as_view(), name='user-posts'),\n    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),\n    path('post/new/', PostCreateView.as_view(), name='post-create'),\n    path('post/<int:pk>/update', PostUpdateView.as_view(), name='post-update'),\n    path('post/<int:pk>/delete', PostDeleteView.as_view(), name='post-delete'),\n    path('about/', views.about, name='blog-about')\n]",
         "detail": "backend.blog.urls",
+        "documentation": {}
+    },
+    {
+        "label": "PostListCreateAPIView",
+        "kind": 6,
+        "importPath": "backend.blog.views",
+        "description": "backend.blog.views",
+        "peekOfCode": "class PostListCreateAPIView(generics.ListCreateAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\nclass PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\nclass PostListView(ListView):\n    model = Post\n    template_name= 'blog/home.html'\n    context_object_name = 'posts'",
+        "detail": "backend.blog.views",
+        "documentation": {}
+    },
+    {
+        "label": "PostDetailAPIView",
+        "kind": 6,
+        "importPath": "backend.blog.views",
+        "description": "backend.blog.views",
+        "peekOfCode": "class PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\nclass PostListView(ListView):\n    model = Post\n    template_name= 'blog/home.html'\n    context_object_name = 'posts'\n    ordering = ['-date_posted'] \n    paginate_by = 3\nclass UserPostListView(ListView):",
+        "detail": "backend.blog.views",
         "documentation": {}
     },
     {
@@ -546,7 +606,7 @@
         "kind": 2,
         "importPath": "backend.blog.views",
         "description": "backend.blog.views",
-        "peekOfCode": "def home(request):\n    context = {'posts' : Post.objects.all() }\n    return render(request, 'blog/home.html', context)\nclass PostListView(ListView):\n    model = Post\n    template_name= 'blog/home.html'\n    context_object_name = 'posts'\n    ordering = ['-date_posted'] \n    paginate_by = 3\nclass UserPostListView(ListView):",
+        "peekOfCode": "def home(request):\n    context = {'posts' : Post.objects.all() }\n    return render(request, 'blog/home.html', context)\nclass PostListCreateAPIView(generics.ListCreateAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\nclass PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):\n    queryset = Post.objects.all()\n    serializer_class = PostSerializer\nclass PostListView(ListView):",
         "detail": "backend.blog.views",
         "documentation": {}
     },
@@ -582,7 +642,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "SECRET_KEY = 'django-insecure-v%@#)^()f04%m7w!)k!047c0mi)jou#d=_*o_e5h1p3=m+@yv('\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'backend.users.apps.UsersConfig',\n    'backend.blog.apps.BlogConfig',\n    'crispy_forms',\n    \"crispy_bootstrap5\",",
+        "peekOfCode": "SECRET_KEY = 'django-insecure-v%@#)^()f04%m7w!)k!047c0mi)jou#d=_*o_e5h1p3=m+@yv('\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'rest_framework',\n    'corsheaders',\n    'backend.users.apps.UsersConfig',\n    'backend.blog.apps.BlogConfig',",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
@@ -591,7 +651,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'backend.users.apps.UsersConfig',\n    'backend.blog.apps.BlogConfig',\n    'crispy_forms',\n    \"crispy_bootstrap5\",\n    'django.contrib.admin',\n    'django.contrib.auth',",
+        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'rest_framework',\n    'corsheaders',\n    'backend.users.apps.UsersConfig',\n    'backend.blog.apps.BlogConfig',\n    'crispy_forms',\n    \"crispy_bootstrap5\",",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
@@ -600,7 +660,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "ALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'backend.users.apps.UsersConfig',\n    'backend.blog.apps.BlogConfig',\n    'crispy_forms',\n    \"crispy_bootstrap5\",\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',",
+        "peekOfCode": "ALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'rest_framework',\n    'corsheaders',\n    'backend.users.apps.UsersConfig',\n    'backend.blog.apps.BlogConfig',\n    'crispy_forms',\n    \"crispy_bootstrap5\",\n    'django.contrib.admin',",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
@@ -609,7 +669,7 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    'backend.users.apps.UsersConfig',\n    'backend.blog.apps.BlogConfig',\n    'crispy_forms',\n    \"crispy_bootstrap5\",\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',",
+        "peekOfCode": "INSTALLED_APPS = [\n    'rest_framework',\n    'corsheaders',\n    'backend.users.apps.UsersConfig',\n    'backend.blog.apps.BlogConfig',\n    'crispy_forms',\n    \"crispy_bootstrap5\",\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
@@ -618,7 +678,16 @@
         "kind": 5,
         "importPath": "backend.django_project.settings",
         "description": "backend.django_project.settings",
-        "peekOfCode": "MIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'whitenoise.middleware.WhiteNoiseMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]",
+        "peekOfCode": "MIDDLEWARE = [\n    'corsheaders.middleware.CorsMiddleware',\n    'django.middleware.security.SecurityMiddleware',\n    'whitenoise.middleware.WhiteNoiseMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',",
+        "detail": "backend.django_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ALLOW_ALL_ORIGINS",
+        "kind": 5,
+        "importPath": "backend.django_project.settings",
+        "description": "backend.django_project.settings",
+        "peekOfCode": "CORS_ALLOW_ALL_ORIGINS = True\nROOT_URLCONF = 'backend.django_project.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [BASE_DIR / 'frontend/templates'],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',",
         "detail": "backend.django_project.settings",
         "documentation": {}
     },
@@ -962,6 +1031,42 @@
         "description": "backend.users.views",
         "peekOfCode": "def profile(request):\n    if request.method=='POST':\n        u_form = UserUpdateForm(request.POST, instance=request.user)\n        p_form = ProfileUpdateForm(request.POST, request.FILES ,instance=request.user.profile)\n        if u_form.is_valid() and p_form.is_valid():\n            u_form.save()\n            p_form.save()\n            messages.success(request, f'Your account has been updated!')\n            return redirect('profile')\n    else:",
         "detail": "backend.users.views",
+        "documentation": {}
+    },
+    {
+        "label": "_Known",
+        "kind": 6,
+        "importPath": "frontend.react-frontend.node_modules.flatted.python.flatted",
+        "description": "frontend.react-frontend.node_modules.flatted.python.flatted",
+        "peekOfCode": "class _Known:\n    def __init__(self):\n        self.key = []\n        self.value = []\nclass _String:\n    def __init__(self, value):\n        self.value = value\ndef _array_keys(value):\n    for i in range(len(value)):\n        yield i",
+        "detail": "frontend.react-frontend.node_modules.flatted.python.flatted",
+        "documentation": {}
+    },
+    {
+        "label": "_String",
+        "kind": 6,
+        "importPath": "frontend.react-frontend.node_modules.flatted.python.flatted",
+        "description": "frontend.react-frontend.node_modules.flatted.python.flatted",
+        "peekOfCode": "class _String:\n    def __init__(self, value):\n        self.value = value\ndef _array_keys(value):\n    for i in range(len(value)):\n        yield i\ndef _object_keys(value):\n    for key in value:\n        yield key\ndef _is_array(value):",
+        "detail": "frontend.react-frontend.node_modules.flatted.python.flatted",
+        "documentation": {}
+    },
+    {
+        "label": "parse",
+        "kind": 2,
+        "importPath": "frontend.react-frontend.node_modules.flatted.python.flatted",
+        "description": "frontend.react-frontend.node_modules.flatted.python.flatted",
+        "peekOfCode": "def parse(value, *args, **kwargs):\n    json = _json.loads(value, *args, **kwargs)\n    wrapped = []\n    for value in json:\n        wrapped.append(_wrap(value))\n    input = []\n    for value in wrapped:\n        if isinstance(value, _String):\n            input.append(value.value)\n        else:",
+        "detail": "frontend.react-frontend.node_modules.flatted.python.flatted",
+        "documentation": {}
+    },
+    {
+        "label": "stringify",
+        "kind": 2,
+        "importPath": "frontend.react-frontend.node_modules.flatted.python.flatted",
+        "description": "frontend.react-frontend.node_modules.flatted.python.flatted",
+        "peekOfCode": "def stringify(value, *args, **kwargs):\n    known = _Known()\n    input = []\n    output = []\n    i = int(_index(known, input, value))\n    while i < len(input):\n        output.append(_transform(known, input, input[i]))\n        i += 1\n    return _json.dumps(output, *args, **kwargs)",
+        "detail": "frontend.react-frontend.node_modules.flatted.python.flatted",
         "documentation": {}
     },
     {

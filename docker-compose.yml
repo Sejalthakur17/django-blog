@@ -27,8 +27,16 @@ services:
     depends_on:
       - db
     networks:
+      - backend_network 
+  frontend:
+    build: ./react-frontend
+    container_name: blog_frontend
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    networks:
       - backend_network
-
 volumes:
     - ./database:/app/database  
     - ./backend/media:/app/backend/media
