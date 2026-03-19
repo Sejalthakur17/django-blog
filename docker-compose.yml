@@ -15,7 +15,7 @@ services:
   backend:
     image: 909646905892.dkr.ecr.ap-south-1.amazonaws.com/django-blog:latest
     container_name: blog_backend
-    command: >
+    restart: always 
       sh -c "
       python manage.py migrate &&
       gunicorn backend.django_project.wsgi:application --bind 0.0.0.0:8000
@@ -32,6 +32,7 @@ services:
   frontend:
     build: ./react-frontend
     container_name: blog_frontend
+    restart: always   
     ports:
       - "3000:80"
     depends_on:
