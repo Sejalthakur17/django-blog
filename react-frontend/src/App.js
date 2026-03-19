@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const API = "http://3.7.135.124:8000";
+const API = "/api";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -13,7 +13,7 @@ function App() {
   }, []);
 
   const fetchPosts = () => {
-    fetch(`${API}/api/posts/`)
+    fetch(`${API}/posts/`)   // ✅ fixed
       .then(res => res.json())
       .then(data => setPosts(data));
   };
@@ -21,7 +21,7 @@ function App() {
   const createPost = () => {
     if (!title || !content) return;
 
-    fetch(`${API}/api/posts/`, {
+    fetch(`${API}/posts/`, {   // ✅ fixed
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ function App() {
   };
 
   const deletePost = (id) => {
-    fetch(`${API}/api/posts/${id}/`, {
+    fetch(`${API}/posts/${id}/`, {   // ✅ fixed
       method: "DELETE",
     }).then(fetchPosts);
   };
